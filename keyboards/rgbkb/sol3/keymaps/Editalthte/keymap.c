@@ -35,8 +35,6 @@
 enum sol_layers
 {
 	_QWERTY,
-	_COLEMAK,
-	_GAME,
 	_FN,
 	_ADJUST
 };
