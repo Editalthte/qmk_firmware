@@ -1,28 +1,32 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
-      "request": "launch",
-      "args": [
-        ""
-      ],
-      "stopAtEntry": false,
-      "cwd": "/home/jordan/Repos/qmk_firmware/keyboards/rgbkb/sol3/keymaps/Editalthte",
-      "environment": [],
-      "program": "/home/jordan/Repos/qmk_firmware/keyboards/rgbkb/sol3/keymaps/Editalthte/build/Debug/outDebug",
-      "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
-      "externalConsole": false,
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
-    }
-  ]
+	"version": "0.2.0",
+
+	"configurations":
+	[
+		{
+			"name": "C/C++ Runner: Debug Session",
+			"type": "cppdbg",
+			"request": "launch",
+			"args": [""],
+
+			"stopAtEntry": false,
+			"cwd": "/home/jordan/Repos/qmk_firmware/keyboards/rgbkb/sol3/keymaps/Editalthte",
+			"environment": [],
+			"program": "/home/jordan/Repos/qmk_firmware/keyboards/rgbkb/sol3/keymaps/Editalthte/build/Debug/outDebug",
+
+			"internalConsoleOptions": "openOnSessionStart",
+			"MIMode": "gdb",
+			"miDebuggerPath": "gdb",
+			"externalConsole": false,
+
+			"setupCommands":
+			[
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		}
+	]
 }
