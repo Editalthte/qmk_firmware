@@ -54,8 +54,6 @@ enum sol_keycodes
 
 #define FN       MO(_FN)
 #define ADJUST   MO(_ADJUST)
-#define COLEMAK  DF(_COLEMAK)
-#define GAME     DF(_GAME)
 #define QWERTY   DF(_QWERTY)
 #define FN_CAPS  LT(_FN, KC_CAPS)
 //#define RGB_ADJ  LT(_ADJUST, RGB_TOG)
