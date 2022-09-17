@@ -146,14 +146,6 @@ void render_layer_status(void)
 			oled_write_ln_P(PSTR("QWRTY"), false);
 			break;
 
-		case _COLEMAK:
-			oled_write_ln_P(PSTR("Colemk"), false);
-			break;
-
-		case _GAME:
-			oled_write_ln_P(PSTR("Game  "), false);
-			break;
-
 		case _FN:
 			oled_write_ln_P(PSTR("FN   "), false);
 			break;
