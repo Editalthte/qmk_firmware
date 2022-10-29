@@ -26,6 +26,7 @@
 #include "main_layer.h"
 #include "quantum_keycodes.h"
 #include "layers.h"
+#include "rgb_matrix.h"
 #include QMK_KEYBOARD_H
 
 enum sol_layers
@@ -166,10 +167,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 		),
 };
 
+void process_numpad(void);
+void process_numpad() {
+	return;
+}
+
+
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
 	switch (keycode)
 	{
+		//  == Sol3 "Default" functionality == //
+		// Need to read on what exactly they do before possibly removing them
 		case MENU_BTN:
 			if (record->event.pressed)
 			{ rgb_menu_selection(); }
@@ -200,6 +210,77 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 
 			return false;  // Skip all further processing of this key
 
+
+		// == Custom key/event handling == //
+
+		// Function Layer event handlers
+		case FN_MOD:
+			if(record->event.pressed)
+			{}
+
+			return true;
+
+		case FN_TOG:
+			if(record->event.pressed)
+			{}
+
+			return true;
+
+		// Downshift Layer event handlers
+		case DS_MOD:
+			if(record->event.pressed)
+			{}
+
+			return true;
+
+		case DS_TOG:
+			if (record->event.pressed)
+			{}
+
+			return true;
+
+		// Numpad Layer event handlers
+		case NUM_MOD:
+			if(record->event.pressed)
+			{}
+
+			return true;
+
+		case NUM_TOG:
+			if (record->event.pressed)
+			{}
+
+			return true;
+
+		// Navigation Layer event handlers
+		case NAV_MOD:
+			if(record->event.pressed)
+			{}
+
+			return true;
+
+		case NAV_TOG:
+			if (record->event.pressed)
+			{}
+
+			return true;
+
+		// Toggle Control Layer event handlers
+		case TOG_MOD:
+			if(record->event.pressed)
+			{}
+
+			return true;
+
+		// Sol Control Layer event handlers
+		case SOL_TOG:
+			if(record->event.pressed)
+			{}
+
+			return true;
+
+
+		// == No relevant cases == //
 		default:
 			return true;
 	}
