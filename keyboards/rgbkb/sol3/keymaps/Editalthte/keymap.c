@@ -145,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 			KC_GESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC,
 			KC_TAB,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSLS,
 			DS_MOD,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_QUOT,
-			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   TOG_MOD,                  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
+			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   TOG_MOD,                  SOL_TOG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
 			KC_LCTL,  KC_LGUI, KC_LALT, KC_NO,   KC_NO,   KC_SPC,  NUM_TOG, NAV_TOG, FN_TOG, KC_NO,   KC_SPC,  KC_NO,   KC_RGUI, KC_DEL,  KC_RALT, KC_RCTL,
 
 			KC_VOLD,  KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,                                    KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,
@@ -155,10 +155,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	// Sol Control Layer (RGB Settings, reset EEPROM, reboot, etc.)
 	[SOL_CONTROL_LAYER_ID] =
 		LAYOUT(
-			KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   QK_BOOT,                  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+			KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   QK_BOOT,                  EE_CLR,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
 			KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
 			KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-			KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   SOL_TOG,                  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+			KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   SOL_TOG,                  QK_RBT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
 			KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
 
 			KC_VOLD,  KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,                                    KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,
