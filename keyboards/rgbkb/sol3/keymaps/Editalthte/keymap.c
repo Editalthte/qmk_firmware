@@ -47,6 +47,7 @@ enum occupied_keycodes
 
 enum sol_keycodes
 {
+	// Sol "Default" Keycodes -- Will keep these for reference, but currently are unused.
 	TCH_TOG = SAFE_RANGE,  // Disables touch processing
 	MENU_BTN,
 	MENU_UP,
@@ -167,6 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 		),
 };
 
+// 
 void process_numpad(void);
 void process_numpad() {
 	return;
@@ -184,25 +186,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 			if (record->event.pressed)
 			{ rgb_menu_selection(); }
 
-			return false;
+			return false;  // Skip all further processing of this key
 
 		case MENU_UP:
 			if (record->event.pressed)
 			{ rgb_menu_action(true); }
 
-			return false;
+			return false;  // Skip all further processing of this key
 
 		case MENU_DN:
 			if (record->event.pressed)
 			{ rgb_menu_action(false); }
 
-			return false;
+			return false;  // Skip all further processing of this key
 
 		case RGB_RST:
 			if (record->event.pressed)
 			{ eeconfig_update_rgb_matrix_default(); }
 
-			return false;
+			return false;  // Skip all further processing of this key
 
 		case TCH_TOG:
 			if (record->event.pressed)
