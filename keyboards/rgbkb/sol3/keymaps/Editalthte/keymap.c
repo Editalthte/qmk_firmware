@@ -12,9 +12,9 @@
 	[TEMPLATE_LAYER_ID] =
 		LAYOUT(
 			KC_GESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC,
-			KC_TAB,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSLS,
-			DS_MOD,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_QUOT,
-			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
+			KC_TAB,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSLS,
+			DS_MOD,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_QUOT,
+			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   TOG_MOD,                  RGB_TOG, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
 			KC_LCTL,  KC_LGUI, KC_LALT, KC_NO,   KC_NO,   KC_SPC,  NUM_MOD, NAV_MOD, FN_MOD, KC_NO,   KC_SPC,  KC_NO,   KC_RGUI, KC_DEL,  KC_RALT, KC_RCTL,
 
 			KC_VOLD,  KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,                                    KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,
@@ -39,6 +39,11 @@ enum sol_layers
 	SOL_CONTROL_LAYER_ID
 };
 
+enum occupied_keycodes
+{
+	MKI2C = 0x00 // Convenience/Friendly name for slots taken up by non-keys (such as the LED display)
+};
+
 enum sol_keycodes
 {
 	TCH_TOG = SAFE_RANGE,  // Disables touch processing
@@ -47,15 +52,16 @@ enum sol_keycodes
 	MENU_DN,
 	RGB_RST,
 
-	// Momentary Layer Switch
+	// Momentary Layer Switch Keys
 	FN_MOD = MO(FN_LAYER_ID),
 	DS_MOD = MO(DOWNSHIFT_LAYER_ID),
 	NUM_MOD = MO(NUMPAD_LAYER_ID),
 	NAV_MOD = MO(NAVIGATION_LAYER_ID),
 	TOG_MOD = MO(TOGGLE_CONTROL_LAYER_ID),
-	SOL_MOD = MO(SOL_CONTROL_LAYER_ID),
+	// Sol Control Layer does not have a MOD entry as it should be very rare that we need to do anything with it,
+	// and want to reduce the chance of accidentally interacting with it
 
-	// Toggle Layer
+	// Toggle Layer Keys
 	FN_TOG = TG(FN_LAYER_ID),
 	DS_TOG = TG(DOWNSHIFT_LAYER_ID),
 	NUM_TOG = TG(NUMPAD_LAYER_ID),
@@ -72,8 +78,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	[MAIN_LAYER_ID] =
 		LAYOUT(
 			KC_GESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_MINS,                  KC_EQL,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-			KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_NO,                    KC_NO,   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
-			DS_MOD,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_NO,                    KC_NO,   KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+			KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    MKI2C,                    MKI2C,   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
+			DS_MOD,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    MKI2C,                    MKI2C,   KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
 			KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    TOG_MOD,                  RGB_TOG, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,
 			KC_LCTL,  KC_LGUI, KC_LALT, KC_NO,   KC_NO,   KC_SPC,  NUM_MOD, NAV_MOD, FN_MOD, KC_NO,   KC_SPC,  KC_NO,   KC_RGUI, KC_DEL,  KC_RALT, KC_RCTL,
 
@@ -85,9 +91,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	[FN_LAYER_ID] =
 		LAYOUT(
 			KC_GESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F11,                   KC_F12,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_BSPC,
-			KC_TAB,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSLS,
-			DS_MOD,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_QUOT,
-			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
+			KC_TAB,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSLS,
+			DS_MOD,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_QUOT,
+			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   FN_TOG,                   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
 			KC_LCTL,  KC_LGUI, KC_LALT, KC_NO,   KC_NO,   KC_SPC,  NUM_MOD, NAV_MOD, FN_MOD, KC_NO,   KC_SPC,  KC_NO,   KC_RGUI, KC_DEL,  KC_RALT, KC_RCTL,
 
 			KC_VOLD,  KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,                                    KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,
@@ -97,10 +103,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	// "Downshift" Layer (easy access to various symbols such as `-_+= etc.)
 	[DOWNSHIFT_LAYER_ID] =
 		LAYOUT(
-			KC_GESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC,
-			KC_TAB,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSLS,
-			DS_MOD,   KC_NO,   KC_NO,   KC_NO,   KC_UNDS, KC_LPRN, KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_QUOT,
-			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
+			KC_GESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_DEL,
+			KC_TAB,   KC_NO,   KC_NO,   KC_NO,   KC_MINS, KC_LCBR, MKI2C,                    MKI2C,   KC_RCBR, KC_PLUS, KC_NO,   KC_NO,   KC_NO,   KC_PIPE,
+			DS_MOD,   KC_NO,   KC_NO,   KC_NO,   KC_UNDS, KC_LPRN, MKI2C,                    MKI2C,   KC_RPRN, KC_EQL,  KC_NO,   KC_NO,   KC_NO,   KC_GRV,
+			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_EXLM, KC_LBRC, DS_TOG,                   KC_NO,   KC_RBRC, KC_DLR,  KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
 			KC_LCTL,  KC_LGUI, KC_LALT, KC_NO,   KC_NO,   KC_SPC,  NUM_MOD, NAV_MOD, FN_MOD, KC_NO,   KC_SPC,  KC_NO,   KC_RGUI, KC_DEL,  KC_RALT, KC_RCTL,
 
 			KC_VOLD,  KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,                                    KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,
@@ -111,9 +117,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	[NUMPAD_LAYER_ID] =
 		LAYOUT(
 			KC_GESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_7,    KC_8,    KC_9,    KC_PLUS, KC_BSPC,
-			KC_TAB,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_4,    KC_5,    KC_6,    KC_MINS, KC_BSLS,
-			DS_MOD,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_1,    KC_2,    KC_3,    KC_SLSH, KC_QUOT,
-			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_0,    KC_0,    KC_DOT,  KC_ASTR, KC_SFTENT,
+			KC_TAB,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_4,    KC_5,    KC_6,    KC_MINS, KC_BSLS,
+			DS_MOD,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_1,    KC_2,    KC_3,    KC_SLSH, KC_QUOT,
+			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   NUM_TOG,                    KC_NO,   KC_NO,   KC_0,    KC_0,    KC_DOT,  KC_ASTR, KC_SFTENT,
 			KC_LCTL,  KC_LGUI, KC_LALT, KC_NO,   KC_NO,   KC_SPC,  NUM_MOD, NAV_MOD, FN_MOD, KC_NO,   KC_SPC,  KC_NO,   KC_RGUI, KC_DEL,  KC_RALT, KC_RCTL,
 
 			KC_VOLD,  KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,                                    KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,
@@ -124,9 +130,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	[NAVIGATION_LAYER_ID] =
 		LAYOUT(
 			KC_GESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC,
-			KC_TAB,   KC_INS,  KC_HOME, KC_PGUP, KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_BSLS,
-			DS_MOD,   KC_DEL,  KC_END,  KC_PGDN, KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,   KC_QUOT,
-			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
+			KC_TAB,   KC_INS,  KC_HOME, KC_PGUP, KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_BSLS,
+			DS_MOD,   KC_DEL,  KC_END,  KC_PGDN, KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,   KC_QUOT,
+			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   NAV_TOG,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
 			KC_LCTL,  KC_LGUI, KC_LALT, KC_NO,   KC_NO,   KC_SPC,  NUM_MOD, NAV_MOD, FN_MOD, KC_NO,   KC_SPC,  KC_NO,   KC_RGUI, KC_DEL,  KC_RALT, KC_RCTL,
 
 			KC_VOLD,  KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,                                    KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,
@@ -137,10 +143,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	[TOGGLE_CONTROL_LAYER_ID] =
 		LAYOUT(
 			KC_GESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC,
-			KC_TAB,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSLS,
-			DS_MOD,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_QUOT,
-			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
-			KC_LCTL,  KC_LGUI, KC_LALT, KC_NO,   KC_NO,   KC_SPC,  NUM_MOD, NAV_MOD, FN_MOD, KC_NO,   KC_SPC,  KC_NO,   KC_RGUI, KC_DEL,  KC_RALT, KC_RCTL,
+			KC_TAB,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSLS,
+			DS_MOD,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_QUOT,
+			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   TOG_MOD,                  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
+			KC_LCTL,  KC_LGUI, KC_LALT, KC_NO,   KC_NO,   KC_SPC,  NUM_TOG, NAV_TOG, FN_TOG, KC_NO,   KC_SPC,  KC_NO,   KC_RGUI, KC_DEL,  KC_RALT, KC_RCTL,
 
 			KC_VOLD,  KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,                                    KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,
 			KC_VOLD,  KC_VOLU, KC_MNXT, KC_MPLY, KC_MPRV,                                                      KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, KC_MPRV
@@ -149,11 +155,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 	// Sol Control Layer (RGB Settings, reset EEPROM, reboot, etc.)
 	[SOL_CONTROL_LAYER_ID] =
 		LAYOUT(
-			KC_GESC,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC,
-			KC_TAB,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSLS,
-			DS_MOD,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_QUOT,
-			KC_LSFT,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_SFTENT,
-			KC_LCTL,  KC_LGUI, KC_LALT, KC_NO,   KC_NO,   KC_SPC,  NUM_MOD, NAV_MOD, FN_MOD, KC_NO,   KC_SPC,  KC_NO,   KC_RGUI, KC_DEL,  KC_RALT, KC_RCTL,
+			KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   QK_BOOT,                  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+			KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+			KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   MKI2C,                    MKI2C,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+			KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   SOL_TOG,                  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+			KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
 
 			KC_VOLD,  KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,                                    KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU, KC_VOLD, KC_VOLU,
 			KC_VOLD,  KC_VOLU, KC_MNXT, KC_MPLY, KC_MPRV,                                                      KC_VOLD, KC_VOLU, KC_MNXT, KC_MPLY, KC_MPRV
